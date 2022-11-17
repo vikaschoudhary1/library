@@ -13,9 +13,24 @@
     <script>
         let myLibrary = [];
 
+        function Book(author, title, pages, isRead) {
+            this.author = author
+            this.title = title
+            this.pages = pages
+            this.isRead = isRead
+        };
+
         function addBookToLibrary(input) {
             myLibrary.push(input);
         };
+
+        function showBooks(){
+            myLibrary.map((book) => console.table(book))
+        };
+
+        const book1 = new Book('Hobbit', 'J.R.R.', 295, true);
+        const book2 = new Book('Two States', 'Chetu', 150, true);
+
     </script>
 </body>
 </html>
