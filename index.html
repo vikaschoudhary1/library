@@ -5,15 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="">
-        <input type="text">
-    </form>
+    <div>
+        <form action="">
+            <input type="text">
+        </form>
+    </div>
+    
+    <div id="library">
+
+    </div>
+
     <script>
         let myLibrary = [];
 
-        function Book(author, title, pages, isRead) {
+        function Book(title, author, pages, isRead) {
             this.author = author
             this.title = title
             this.pages = pages
@@ -25,11 +33,35 @@
         };
 
         function showBooks(){
-            myLibrary.map((book) => console.table(book))
+
+            console.log(document.getElementsByClassName('book'));
+
+            myLibrary.map((book) => {
+
+                const author = book.author;
+                const title = book.title;
+                const pages = book.pages;
+                const isRead = book.isRead;
+                
+                const para = document.createElement('div');
+                para.setAttribute('id',pages);
+                para.classList.add('book')
+                document.getElementById('library').appendChild(para);
+
+                for (const key in book) {
+                    const bookInfo = document.createElement('div');
+                    bookInfo.classList.add('book-info');
+                    bookInfo.innerText = book[key];
+                    document.getElementById(pages).appendChild(bookInfo);
+                    }
+            })
         };
 
         const book1 = new Book('Hobbit', 'J.R.R.', 295, true);
-        const book2 = new Book('Two States', 'Chetu', 150, true);
+        const book2 = new Book('Two States', 'Chetan', 150, true);
+
+        addBookToLibrary(book1);
+        addBookToLibrary(book2);
 
     </script>
 </body>
