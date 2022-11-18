@@ -12,6 +12,7 @@
         <form action="">
             <input type="text">
         </form>
+        <button id="showBooks">Show Books</button>
     </div>
     
     <div id="library">
@@ -62,6 +63,8 @@
 
         addBookToLibrary(book1);
         addBookToLibrary(book2);
+
+        document.getElementById('showBooks').addEventListener('click', () => showBooks())
 
     </script>
 </body>
