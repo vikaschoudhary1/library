@@ -1,0 +1,15 @@
+#library {
+    /* display: grid; */
+    margin: 2em;
+}
+
+.book {
+    display: flex;
+    gap: 1em;
+    background-color: rgb(243, 243, 243);
+    border-radius: 2em;
+    box-shadow: 1px 1px 1px 1px gray;
+    grid-template-columns: minmax(10em 1fr);
+    padding: .5em 1em;
+    margin: 2em;
+}
