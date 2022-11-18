@@ -87,6 +87,16 @@
 
         document.getElementById('showBooks').addEventListener('click', () => showBooks())
 
+        function collectBook () {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const pages = document.getElementById('pages').value;
+            const newBook = new Book(title, author, pages, true);
+            addBookToLibrary(newBook);
+        }
+
+        document.getElementById('formBtn').addEventListener('click', () => collectBook())
+
     </script>
 </body>
 </html>
