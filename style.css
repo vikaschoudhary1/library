@@ -13,3 +13,8 @@
     padding: .5em 1em;
     margin: 2em;
 }
+
+.formInputs {
+    display: grid;
+    grid-template-columns: auto auto;
+}

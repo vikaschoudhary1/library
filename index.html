@@ -12,18 +12,22 @@
         <form action="" id="mainForm">
             <fieldset>
                 <legend>Add a book</legend>
-                <label for="title" spellcheck="true">Title</label>
-                <input type="text" id="title" name="title">
-                <label for="author">Author</label>
-                <input type="text" id="author">
-                <label for="pages">Pages</label>
-                <input type="number" id="pages">
-                <label for="isRead">Have you read it?</label>
-                <select name="isRead" id="isRead">
-                    <option value="true">Yes</option>
-                    <option value="false">Not yet</option>
-                </select>
-                <button type="button">Add Book</button>
+                <div class="formInputs">
+                    <label for="title" spellcheck="true">Title</label>
+                    <input type="text" id="title" name="title" required>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" required>  
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" required>
+                    <label for="">Have you read it?</label>
+                    <div>
+                        <input type="radio" value="true" id="isRead" name="isRead">
+                        <label for="isRead">Yes</label>
+                        <input type="radio" value="false" id="isRead" name="isRead">
+                        <label for="isRead">No</label>
+                    </div>
+                </div>
+                <button type="button" id="formBtn">Add Book</button>
             </fieldset>
         </form>
         <button id="showBooks">Show Books</button>
@@ -43,31 +47,34 @@
             this.isRead = isRead
         };
 
+        let count = 0;
+
         function addBookToLibrary(input) {
+            count++;
+            input.count = count;
             myLibrary.push(input);
         };
 
         function showBooks(){
 
-            console.log(document.getElementsByClassName('book'));
-
             myLibrary.map((book) => {
+                if(book.isDisplayed === true){
+                    return
+                }
 
-                const author = book.author;
-                const title = book.title;
-                const pages = book.pages;
-                const isRead = book.isRead;
+                const index = book.count;
+                book.isDisplayed = true;
                 
-                const para = document.createElement('div');
-                para.setAttribute('id',pages);
-                para.classList.add('book')
-                document.getElementById('library').appendChild(para);
+                const newBook = document.createElement('div');
+                newBook.setAttribute('id', index);
+                newBook.classList.add('book')
+                document.getElementById('library').appendChild(newBook);
 
                 for (const key in book) {
                     const bookInfo = document.createElement('div');
                     bookInfo.classList.add('book-info');
                     bookInfo.innerText = book[key];
-                    document.getElementById(pages).appendChild(bookInfo);
+                    document.getElementById(index).appendChild(bookInfo);
                     }
             })
         };
