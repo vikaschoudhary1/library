@@ -79,6 +79,12 @@
                     bookInfo.innerText = book[key];
                     document.getElementById(index).appendChild(bookInfo);
                     }
+
+                const delBook = document.createElement('button');
+                delBook.innerText = 'Delete Book'
+                delBook.setAttribute('data-delindex', index);
+                delBook.classList.add('delBook')
+                document.getElementById(index).appendChild(delBook);
             })
         };
 
@@ -112,6 +118,19 @@
 
         document.getElementById('addNewBook').addEventListener('click', () => {
             document.getElementById('formContainer').classList.toggle('hidden')
+        })
+
+        const deleteButtons = document.getElementsByClassName('delBook');
+        const buttonsArr = [...deleteButtons]
+        console.log(buttonsArr)
+        buttonsArr.forEach(element => {
+            element.addEventListener('click', () => {
+                console.log(element.dataset.delindex)
+                const delIndex = element.dataset.delindex;
+                document.getElementById(delIndex).remove();
+                showBooks()
+            })
+            
         })
 
     </script>
