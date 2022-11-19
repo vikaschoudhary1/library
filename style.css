@@ -18,3 +18,7 @@
     display: grid;
     grid-template-columns: auto auto;
 }
+
+.hidden{
+    display: none;
+}
