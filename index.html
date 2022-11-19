@@ -39,6 +39,7 @@
 
     <script>
         let myLibrary = [];
+        let buttonsArr = [...document.getElementsByClassName('delBook')]
 
         function Book(title, author, pages, isRead) {
             this.title = title
@@ -74,6 +75,11 @@
                 document.getElementById('library').appendChild(newBook);
 
                 for (const key in book) {
+
+                    if( key=== 'count' || key === 'isRead'){
+                        continue
+                    };
+
                     const bookInfo = document.createElement('div');
                     bookInfo.classList.add('book-info');
                     bookInfo.innerText = book[key];
@@ -86,6 +92,8 @@
                 delBook.classList.add('delBook')
                 document.getElementById(index).appendChild(delBook);
             })
+            updateDelBtnArr();
+            addEventDel();
         };
 
         const book1 = new Book('Hobbit', 'J.R.R.', 295, true);
@@ -120,18 +128,21 @@
             document.getElementById('formContainer').classList.toggle('hidden')
         })
 
-        const deleteButtons = document.getElementsByClassName('delBook');
-        const buttonsArr = [...deleteButtons]
-        console.log(buttonsArr)
-        buttonsArr.forEach(element => {
-            element.addEventListener('click', () => {
+        function updateDelBtnArr() {
+            buttonsArr = [...document.getElementsByClassName('delBook')]
+        }
+        
+        console.log(buttonsArr);
+        function addEventDel(){
+            buttonsArr.forEach(element => {
+                element.addEventListener('click', () => {
                 console.log(element.dataset.delindex)
                 const delIndex = element.dataset.delindex;
                 document.getElementById(delIndex).remove();
-                showBooks()
-            })
-            
-        })
+                });
+            });
+        };
+        
 
     </script>
 </body>
