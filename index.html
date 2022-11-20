@@ -5,36 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="icon" href="./books.png">
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
 </head>
 <body>
-    <div>
-        <button id="addNewBook">Add a new book!</button>
-    </div>
-    <div id="formContainer" class="hidden">
-        <form action="" id="mainForm">
-            <fieldset>
-                <legend>Add a book</legend>
-                <div class="formInputs">
-                    <label for="title" spellcheck="true">Title</label>
-                    <input type="text" id="title" name="title" required>
-                    <label for="author">Author</label>
-                    <input type="text" id="author" required>  
-                    <label for="pages">Pages</label>
-                    <input type="number" id="pages" required>
-                    <label for="isRead">Have you read it?</label>
-                    <select name="isRead" id="isRead">
-                        <option value="true">Yes</option>
-                        <option value="false">Not yet</option>
-                    </select>
-                </div>
-                <button type="button" id="formBtn">Add Book</button>
-            </fieldset>
-        </form>
-    </div>
-    <button id="showBooks">Show Books</button>
-    <div id="library">
-
+    <div class="container">
+        <div class="header">Library</div>
+        <div>
+            <button id="addNewBook">Add a new book!</button>
+        </div>
+        <div id="formContainer" class="hidden">
+            <form action="" id="mainForm">
+                <fieldset>
+                    <legend>Add a book</legend>
+                    <div class="formInputs">
+                        <label for="title" spellcheck="true">Title</label>
+                        <input type="text" id="title" name="title" required>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" required>
+                        <label for="pages">Pages</label>
+                        <input type="number" id="pages" required>
+                        <label for="isRead">Have you read it?</label>
+                        <select name="isRead" id="isRead">
+                            <option value="Yes">Yes</option>
+                            <option value="Not yet">Not yet</option>
+                        </select>
+                    </div>
+                    <button type="button" id="formBtn">Add Book</button>
+                </fieldset>
+            </form>
+        </div>
+        <div><button id="showBooks">Show Books</button></div>
+        <div id="library">
+        </div>
     </div>
 
     <script>
@@ -87,7 +91,7 @@
                     }
 
                 const delBook = document.createElement('button');
-                delBook.innerText = 'Delete Book'
+                delBook.innerText = 'Delete book';
                 delBook.setAttribute('data-delindex', index);
                 delBook.classList.add('delBook')
                 document.getElementById(index).appendChild(delBook);
@@ -105,10 +109,10 @@
         document.getElementById('showBooks').addEventListener('click', () => showBooks())
 
         function collectBook () {
-            const title = document.getElementById('title').value;
-            const author = document.getElementById('author').value;
-            const pages = document.getElementById('pages').value;
-            const read = document.getElementById('isRead').value;
+            const title = 'Title: ' + document.getElementById('title').value;
+            const author = 'Author: ' + document.getElementById('author').value;
+            const pages = 'No. of pages: ' + document.getElementById('pages').value;
+            const read = 'Read?: ' + document.getElementById('isRead').value;
 
             if (title === '' || author === '' || pages === ''){
                 return
@@ -117,6 +121,7 @@
             console.log(read);
             const newBook = new Book(title, author, pages, read);
             addBookToLibrary(newBook);
+            showBooks();
             document.getElementById('title').value = '';
             document.getElementById('author').value = '';
             document.getElementById('pages').value = '';
