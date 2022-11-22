@@ -27,7 +27,7 @@ body, :root {
 .book {
     font-family: 'Dancing Script';
     display: grid;
-    gap: 1em;
+    /* gap: .5em; */
     border-radius: 2em;
     padding: .5em 1em;
     width: 10em;
@@ -37,6 +37,7 @@ body, :root {
     background-size: cover;
     justify-content: center;
     padding: 3.2em .5em .5em 1.5em;
+    justify-items: center;
 }
 
 .formInputs {
@@ -53,8 +54,9 @@ body, :root {
 }
 
 .delBook {
-    background-image: url(./trash.png);
+    /* background-image: url(./trash.png); */
     height: 1.5em;
     border: none;
     background-color: transparent;
+    height: 1.5em;
 }

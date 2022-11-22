@@ -85,13 +85,19 @@
                     };
 
                     const bookInfo = document.createElement('div');
-                    bookInfo.classList.add('book-info');
+                    bookInfo.classList.add(key);
                     bookInfo.innerText = book[key];
                     document.getElementById(index).appendChild(bookInfo);
-                    }
+                }
 
-                const delBook = document.createElement('button');
-                delBook.innerText = 'Delete book';
+                const changeStatus = document.createElement('button');
+                changeStatus.innerText = 'Change Status';
+                changeStatus.classList.add('change-status');
+                console.log(document.getElementById(index))
+
+                const delBook = document.createElement('img');
+                delBook.src = './trash.png'
+                // delBook.innerText = 'Delete book';
                 delBook.setAttribute('data-delindex', index);
                 delBook.classList.add('delBook')
                 document.getElementById(index).appendChild(delBook);
