@@ -80,7 +80,7 @@
 
                 for (const key in book) {
 
-                    if( key=== 'count' || key === 'isRead'){
+                    if( key=== 'count' || key === 'isDisplayed'){
                         continue
                     };
 
@@ -89,11 +89,6 @@
                     bookInfo.innerText = book[key];
                     document.getElementById(index).appendChild(bookInfo);
                 }
-
-                const changeStatus = document.createElement('button');
-                changeStatus.innerText = 'Change Status';
-                changeStatus.classList.add('change-status');
-                console.log(document.getElementById(index))
 
                 const delBook = document.createElement('img');
                 delBook.src = './trash.png'
